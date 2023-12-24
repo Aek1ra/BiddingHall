@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.akiteam.demo.mapper.BiddingHallMapper">
+
+    <insert id="addBiddingInfo" useGeneratedKeys="true">
+        insert into bidding_hall (id,trade_name, trade_num, starting_price, auction_type, start_time, end_time, status, operate)
+        values (#{id},#{tradeName}, #{tradeNum}, #{startingPrice}, #{auctionType}, #{startTime}, #{endTime}, #{status}, #{operate})
+    </insert>
+
+    <select id="pageQuery" resultType="com.akiteam.demo.pojo.SaleorderHallResult">
+        select * from bidding_hall
+        <where>
+            <if test="tradeName !=null and tradeName !=''">
+                and trade_name like concat('%',#{tradeName},'%')
+            </if>
+        </where>
+        order by startTime desc
+    </select>
+
+    <select id="getInfoById" resultType="com.akiteam.demo.entity.BiddingHall">
+        select * from bidding_hall
+        <where>
+            <if test="id != null and id != ''">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+</mapper>
+

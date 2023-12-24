@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.akiteam.demo.mapper.QuotationAmountTableMapper">
+
+    <select id="getMoney" resultType="java.math.BigDecimal">
+        select money from quotation_amount_table
+        <where>
+            <if test="id != null and id != ''">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <select id="getMaxMoney" resultType="java.math.BigDecimal">
+        select MAX(money) from quotation_amount_table
+        <where>
+            <if test="id != null and id != ''">
+                id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addBiddingInfo" useGeneratedKeys="true">
+        insert into quotation_amount_table(user_id, id, start_time, end_time, money)
+        values (#{user_id},#{id}, #{start_time}, #{end_time}, #{money})
+    </insert>
+
+
+</mapper>
