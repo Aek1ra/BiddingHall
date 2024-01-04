@@ -1,8 +1,7 @@
 package com.akiteam.demo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,61 +14,61 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @NoArgsConstructor
-@ApiModel(value = "竞价大厅实体类")
+@Schema(name = "竞价大厅实体类")
 @TableName(value = "bidding_hall")
 public class BiddingHall implements Serializable {
 
     /**
      * 主键ID
      */
-    @ApiModelProperty(value = "主键id")
+    @Schema(name = "主键id")
     private int id;
 
     /**
      * 竞价商品名称
      */
-    @ApiModelProperty(value = "竞价商品名称")
+    @Schema(name = "竞价商品名称")
     private String tradeName;
 
     /**
      * 数量
      */
-    @ApiModelProperty(value = "数量")
+    @Schema(name = "数量")
     private Integer tradeNum;
 
     /**
      * 起拍价格
      */
-    @ApiModelProperty(value = "起拍价格")
+    @Schema(name = "起拍价格")
     private BigDecimal startingPrice;
 
     /**
      * 竞拍类型
      */
-    @ApiModelProperty(value = "竞拍类型")
+    @Schema(name = "竞拍类型")
     private Integer auctionType;
 
     /**
      * 开始时间
      */
-    @ApiModelProperty(value = "开始时间")
+    @Schema(name = "开始时间")
     private String startTime;
 
     /**
      * 结束时间
      */
-    @ApiModelProperty(value = "结束时间")
+    @Schema(name = "结束时间")
     private String endTime;
 
     /**
      * 状态
      */
-    @ApiModelProperty(value = "状态")
+    @Schema(name = "状态")
     private Integer status;
 
     /**
      * 操作
      */
-    @ApiModelProperty(value = "操作")
+    @Schema(name = "操作")
     private Integer operate;
 }
