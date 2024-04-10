@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.akiteam.demo.mapper.AuctionMapper">
+    <resultMap id="AuctionRecordsResultMap" type="com.akiteam.demo.pojo.AuctionRecords">
+        <result column="goods_name" property="goodsName"></result>
+        <result column="auction_num" property="auctionNum"></result>
+        <result column="auction_price" property="auctionPrice"></result>
+        <result column="auction_time" property="auctionTime"></result>
+    </resultMap>
+
+    <select id="getAllAuctionInfo" resultMap="AuctionRecordsResultMap">
+        select * from auction_info
+    </select>
+
+    <insert id="insertAuctionInfo">
+        INSERT INTO auction_info
+            (goods_name, auction_num, auction_price, auction_time, auction_user_id, remark)
+        VALUES
+            (#{goodsName},#{auctionNum},#{auctionPrice},#{auctionTime},#{auctionUserId},#{remark});
+    </insert>
+
+
+</mapper>
+
