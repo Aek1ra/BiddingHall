@@ -3,12 +3,15 @@ package com.akiteam.demo.controller;
 import com.akiteam.demo.common.R;
 import com.akiteam.demo.pojo.IndexGoodsTotal;
 import com.akiteam.demo.pojo.IndexRemindTotal;
+import com.akiteam.demo.pojo.UnreadInformation;
 import com.akiteam.demo.pojo.UserId;
 import com.akiteam.demo.service.IndexService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/index")
@@ -35,8 +38,13 @@ public class IndexController {
     @PostMapping("/getRemindTotal")
     @Operation(summary = "获取系统信息")
     public R<IndexRemindTotal> getRemindTotal(@RequestBody UserId userId){
-        return R.data(indexService.getRemindTotal(userId.getUserId()));
+        return R.data(indexService.getRemindTotal(userId));
     }
 
+    @PostMapping("/getUnreadInformation")
+    @Operation(summary = "获取未读信息")
+    public R<List<UnreadInformation>> getUnreadInformation(@RequestBody UserId userId){
+        return R.data(indexService.getUnreadInformation(userId));
+    }
 
 }

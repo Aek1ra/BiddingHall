@@ -1,8 +1,9 @@
 package com.akiteam.demo.mapper;
 
-import com.akiteam.demo.entity.AuctionInfo;
+import com.akiteam.demo.entity.GoodsInfo;
 import com.akiteam.demo.pojo.AuctionRecords;
-import com.github.pagehelper.Page;
+import com.akiteam.demo.pojo.GetInformation;
+import com.akiteam.demo.pojo.PassengerFlowAndSalesVolume;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,4 +13,12 @@ public interface AuctionMapper {
     void insertAuctionInfo();
 
     List<AuctionRecords> getAllAuctionInfo();
+
+    void changeInfoStatus(Integer infoId);
+
+    List<GetInformation> getInformation(Integer userId, Integer status);
+
+    List<GoodsInfo> getGoodsInfo(String goodsName);
+
+    PassengerFlowAndSalesVolume getPassengerFlowAndSalesVolume(Integer timeNode);
 }

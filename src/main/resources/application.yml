@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/acution_server?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3307/auction_server?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: sa123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,7 +20,9 @@ spring:
       port: 6379
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 pagehelper:
-  dialect: mysql
-  reasonable: false
+  reasonable: true
   support-methods-arguments: true
+  params: count=countSql

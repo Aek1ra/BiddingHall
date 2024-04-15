@@ -8,6 +8,11 @@
         <result column="auction_time" property="auctionTime"></result>
     </resultMap>
 
+    <resultMap id="PassengerFlowAndSalesVolumeMap" type="com.akiteam.demo.pojo.PassengerFlowAndSalesVolume">
+        <result column="passenger_flow" property="passengerFlow"></result>
+        <result column="sales_volume" property="salesVolume"></result>
+    </resultMap>
+
     <select id="getAllAuctionInfo" resultMap="AuctionRecordsResultMap">
         select * from auction_info
     </select>
@@ -19,6 +24,39 @@
             (#{goodsName},#{auctionNum},#{auctionPrice},#{auctionTime},#{auctionUserId},#{remark});
     </insert>
 
+    <select id="getInformation" resultType="com.akiteam.demo.pojo.GetInformation">
+        select id,title from remind_info
+        <where>
+            user_id = #{userId} and status = #{status}
+        </where>
+    </select>
 
+
+    <update id="changeInfoStatus">
+        UPDATE remind_info
+        <set>
+            status = 1
+        </set>
+        <where>
+            id = #{infoId}
+        </where>
+    </update>
+
+    <select id="getGoodsInfo" resultType="com.akiteam.demo.entity.GoodsInfo">
+        select * from goods_info
+        <where>
+            <if test="goodsName != null">
+                and goods_name like concat('%',#{goodsName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getPassengerFlowAndSalesVolume" resultMap="PassengerFlowAndSalesVolumeMap">
+        with a as
+        (
+        select count(login_time) as passenger_flow from user_info where login_time >= NOW() - INTERVAL '${timeNode}' MINUTE and login_time <![CDATA[<=]]> NOW()
+        )
+        SELECT a.passenger_flow,SUM(auction_info.auction_price) as sales_volume from a,auction_info where auction_info.auction_time >= NOW() - INTERVAL '${timeNode}' MINUTE and auction_info.auction_time <![CDATA[<=]]> NOW() group by passenger_flow
+    </select>
 </mapper>
 

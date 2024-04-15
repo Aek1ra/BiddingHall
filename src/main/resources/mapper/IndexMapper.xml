@@ -7,7 +7,18 @@
     </select>
 
     <select id="getRemindTotal" resultType="java.lang.Integer">
-        select count(content) from remind_info where user_id = #{userId}
+        select count(content) from remind_info
+        <where>
+                user_id = #{userId}
+        </where>
     </select>
+
+    <select id="getUnreadInformation" resultType="com.akiteam.demo.pojo.UnreadInformation">
+        select content from remind_info
+        <where>
+            user_id = #{userId} and status = 0
+        </where>
+    </select>
+
 </mapper>
 
