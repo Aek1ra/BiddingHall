@@ -20,4 +20,6 @@ public interface AuctionService{
 
 
     List<PassengerFlowAndSalesVolume> getPassengerFlowAndSalesVolume();
+
+    TheQuoteAmount getTheQuoteAmount(UserId userId);
 }

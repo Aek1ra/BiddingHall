@@ -16,5 +16,5 @@ public class TimeNode {
      * 动态时间列表
      */
     @Schema(name = "list",description = "动态时间列表")
-    List<Integer> list;
+    private List<Integer> list;
 }

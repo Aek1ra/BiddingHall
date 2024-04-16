@@ -88,4 +88,15 @@ public class AuctionController {
     public R<List<PassengerFlowAndSalesVolume>> getPassengerFlowAndSalesVolume(){
         return R.data(auctionService.getPassengerFlowAndSalesVolume());
     }
+
+    /**
+     * 获得最高报价金额，大写金额数目与当前登录用户id的报价排名
+     * @param userId
+     * @return
+     */
+    @PostMapping("/getTheQuoteAmount")
+    @Operation(summary = "获得最高报价金额，大写金额数目与当前登录用户id的报价排名")
+    public R<TheQuoteAmount> getTheQuoteAmount(@RequestBody UserId userId){
+        return R.data(auctionService.getTheQuoteAmount(userId));
+    }
 }

@@ -24,4 +24,6 @@ public class PassengerFlowAndSalesVolume {
      */
     @Schema(name = "salesVolume",description = "销售额")
     private Integer salesVolume;
+
+
 }

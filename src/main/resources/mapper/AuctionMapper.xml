@@ -54,9 +54,38 @@
     <select id="getPassengerFlowAndSalesVolume" resultMap="PassengerFlowAndSalesVolumeMap">
         with a as
         (
-        select count(login_time) as passenger_flow from user_info where login_time >= NOW() - INTERVAL '${timeNode}' MINUTE and login_time <![CDATA[<=]]> NOW()
+        select count(login_time) as passenger_flow from user_info 
+        <where>
+            login_time >= NOW() - INTERVAL '${timeNode}' MINUTE and login_time <![CDATA[<=]]> NOW()
+        </where>    
         )
-        SELECT a.passenger_flow,SUM(auction_info.auction_price) as sales_volume from a,auction_info where auction_info.auction_time >= NOW() - INTERVAL '${timeNode}' MINUTE and auction_info.auction_time <![CDATA[<=]]> NOW() group by passenger_flow
+        SELECT a.passenger_flow,SUM(auction_info.auction_price) as sales_volume from a,auction_info 
+        <where>
+            auction_info.auction_time >= NOW() - INTERVAL '${timeNode}' MINUTE and auction_info.auction_time <![CDATA[<=]]> NOW() group by passenger_flow
+        </where>
+    </select>
+
+
+    <select id="getMaxQuoteAmount" resultType="java.lang.Integer">
+        WITH a as
+            (
+                SELECT SUM(auction_num * auction_price) AS price,auction_user_id FROM auction_info GROUP BY auction_user_id
+            )
+        select MAX(price) from a
+    </select>
+
+    <select id="getQuoteAmountRank" resultType="java.lang.Integer">
+        WITH b as(
+            WITH a as
+                     (
+                         SELECT SUM(auction_num * auction_price) AS price,auction_user_id FROM auction_info GROUP BY auction_user_id
+                     )
+            SELECT *,RANK() OVER (ORDER BY price DESC) AS ranking FROM a
+        )
+        SELECT ranking FROM b
+            <where>
+                auction_user_id = #{userId}
+            </where>
     </select>
 </mapper>
 

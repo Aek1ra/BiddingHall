@@ -16,5 +16,5 @@ public class IndexRemindTotal {
      * 提醒信息总数
      */
     @Schema(name = "remindTotal",description = "提醒信息总数")
-    Integer remindTotal;
+    private Integer remindTotal;
 }

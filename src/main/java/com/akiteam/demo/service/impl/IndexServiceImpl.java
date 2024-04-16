@@ -7,7 +7,6 @@ import com.akiteam.demo.pojo.UnreadInformation;
 import com.akiteam.demo.pojo.UserId;
 import com.akiteam.demo.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

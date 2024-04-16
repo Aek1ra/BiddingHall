@@ -16,11 +16,11 @@ public class PageHelperPojo {
      * 一共多少页
      */
     @Schema(name = "pageNum",description = "一共多少页")
-    Integer pageNum;
+    private Integer pageNum;
 
     /**
      * 每页多少数据
      */
     @Schema(name = "pageSize",description = "每页多少数据")
-    Integer pageSize;
+    private Integer pageSize;
 }

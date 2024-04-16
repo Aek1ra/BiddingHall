@@ -17,5 +17,5 @@ public class UserId {
      * 用户ID
      */
     @Schema(name = "userId",description = "用户ID")
-    Integer userId;
+    private Integer userId;
 }

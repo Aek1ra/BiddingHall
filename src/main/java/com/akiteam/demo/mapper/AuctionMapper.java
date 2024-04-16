@@ -1,9 +1,7 @@
 package com.akiteam.demo.mapper;
 
 import com.akiteam.demo.entity.GoodsInfo;
-import com.akiteam.demo.pojo.AuctionRecords;
-import com.akiteam.demo.pojo.GetInformation;
-import com.akiteam.demo.pojo.PassengerFlowAndSalesVolume;
+import com.akiteam.demo.pojo.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,4 +19,8 @@ public interface AuctionMapper {
     List<GoodsInfo> getGoodsInfo(String goodsName);
 
     PassengerFlowAndSalesVolume getPassengerFlowAndSalesVolume(Integer timeNode);
+
+    Integer getMaxQuoteAmount();
+
+    Integer getQuoteAmountRank(UserId userId);
 }
