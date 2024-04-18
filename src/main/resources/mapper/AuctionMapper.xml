@@ -13,6 +13,18 @@
         <result column="sales_volume" property="salesVolume"></result>
     </resultMap>
 
+    <resultMap id="getGoodsInfoResultMap" type="com.akiteam.demo.entity.GoodsInfo">
+        <result column="id" property="id"></result>
+        <result column="goods_name" property="goodsName"></result>
+        <result column="total" property="total"></result>
+        <result column="price" property="price"></result>
+        <result column="type" property="type"></result>
+        <result column="start_time" property="startTime"></result>
+        <result column="end_time" property="endTime"></result>
+        <result column="status" property="status"></result>
+        <result column="operation" property="operation"></result>
+    </resultMap>
+
     <select id="getAllAuctionInfo" resultMap="AuctionRecordsResultMap">
         select * from auction_info
     </select>
@@ -42,7 +54,7 @@
         </where>
     </update>
 
-    <select id="getGoodsInfo" resultType="com.akiteam.demo.entity.GoodsInfo">
+    <select id="getGoodsInfo" resultMap="getGoodsInfoResultMap">
         select * from goods_info
         <where>
             <if test="goodsName != null">

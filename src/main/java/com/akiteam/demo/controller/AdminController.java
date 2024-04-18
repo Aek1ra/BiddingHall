@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/admin")
 @Tag(name = "管理相关接口")
@@ -24,7 +26,7 @@ public class AdminController {
      */
     @PostMapping("/getAllUserInfo")
     @Operation(summary = "获取所有用户信息")
-    public R<UserInfo> getAllUserInfo(){
+    public R<List<UserInfo>> getAllUserInfo(){
         return R.data(adminService.getAllUserInfo());
     }
 

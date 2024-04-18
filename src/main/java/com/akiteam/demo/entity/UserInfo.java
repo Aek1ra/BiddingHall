@@ -29,12 +29,6 @@ public class UserInfo {
     private String name;
 
     /**
-     * 用户权限
-     */
-    @Schema(name = "role",description = "用户权限")
-    private Integer role;
-
-    /**
      * 用户登录时间
      */
     @Schema(name = "loginTime",description = "登录时间")
@@ -63,4 +57,10 @@ public class UserInfo {
      */
     @Schema(name = "password",description = "用户密码")
     private String password;
+
+    /**
+     * 登录状态
+     */
+    @Schema(name = "loginStatus",description = "登录状态")
+    private Integer loginStatus;
 }

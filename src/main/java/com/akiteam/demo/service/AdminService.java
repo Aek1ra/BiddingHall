@@ -2,6 +2,8 @@ package com.akiteam.demo.service;
 
 import com.akiteam.demo.entity.UserInfo;
 
+import java.util.List;
+
 public interface AdminService {
-    UserInfo getAllUserInfo();
+    List<UserInfo> getAllUserInfo();
 }

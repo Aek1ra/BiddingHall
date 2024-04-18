@@ -6,6 +6,8 @@ import com.akiteam.demo.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminServiceImpl implements AdminService {
 
@@ -13,7 +15,7 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
     @Override
-    public UserInfo getAllUserInfo() {
+    public List<UserInfo> getAllUserInfo() {
         return adminMapper.getAllUserInfo();
     }
 }

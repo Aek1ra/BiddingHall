@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.akiteam.demo.mapper.UserMapper">
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into user_info values(#{id},#{name},#{loginTime},#{loginLocation},#{createTime},#{account},#{password},#{loginStatus})
+    </insert>
+
+    <select id="login" resultType="java.lang.Integer">
+        select id
+        from user_info
+        <where>
+            account = #{account} and password = #{password}
+        </where>
+    </select>
+
+    <update id="loginStatusChange">
+        update user_info set Login_status = 1
+        <where>
+            id = #{userId}
+        </where>
+    </update>
+
+    <update id="logout">
+        update user_info set Login_status = 0
+        <where>
+            id = #{userId}
+        </where>
+    </update>
+
+    <update id="insertLoginTime">
+        update user_info set login_time = #{currentTimestamp}
+        <where>
+            id = #{userId}
+        </where>
+    </update>
+</mapper>
+

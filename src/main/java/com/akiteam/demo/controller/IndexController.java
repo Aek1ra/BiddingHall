@@ -41,10 +41,14 @@ public class IndexController {
         return R.data(indexService.getRemindTotal(userId));
     }
 
+    /**
+     * 获取未读信息
+     * @param userId
+     * @return
+     */
     @PostMapping("/getUnreadInformation")
     @Operation(summary = "获取未读信息")
     public R<List<UnreadInformation>> getUnreadInformation(@RequestBody UserId userId){
         return R.data(indexService.getUnreadInformation(userId));
     }
-
 }
