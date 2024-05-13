@@ -2,6 +2,7 @@ package com.akiteam.demo.mapper;
 
 import com.akiteam.demo.pojo.UnreadInformation;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -11,5 +12,5 @@ public interface IndexMapper {
 
     Integer getRemindTotal(Integer userId);
 
-    List<UnreadInformation> getUnreadInformation(Integer userId);
+    List<UnreadInformation> getUnreadInformation(@RequestParam("userId") Integer userId);
 }
