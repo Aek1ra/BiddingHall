@@ -58,13 +58,13 @@ public class AuctionController {
 
     /**
      * 更改信息状态
-     * @param infoId
+     * @param userId
      * @return
      */
     @PostMapping("/changeInfoStatus")
     @Operation(summary = "更改信息状态")
-    public R changeInfoStatus(@RequestBody InfoId infoId){
-        auctionService.changeInfoStatus(infoId);
+    public R changeInfoStatus(@RequestBody UserId userId){
+        auctionService.changeInfoStatus(userId);
         return R.success(AkiConstant.DEFAULT_SUCCESS_MESSAGE.getMsg());
     }
 
@@ -99,4 +99,15 @@ public class AuctionController {
     public R<TheQuoteAmount> getTheQuoteAmount(@RequestBody UserId userId){
         return R.data(auctionService.getTheQuoteAmount(userId));
     }
+
+    /**
+     * 获取竞拍商品排名
+     * @return
+     */
+    @PostMapping("/getAuctionRank")
+    @Operation(summary = "获取竞拍商品排名")
+    public R<List<AuctionRank>> getAuctionRank(){
+        return R.data(auctionService.getAuctionRank());
+    }
+
 }

@@ -4,6 +4,7 @@ import com.akiteam.demo.Constant.GlobalConstant;
 import com.akiteam.demo.common.R;
 import com.akiteam.demo.pojo.User;
 import com.akiteam.demo.pojo.UserId;
+import com.akiteam.demo.pojo.UserLoginAccess;
 import com.akiteam.demo.pojo.UserLoginInfo;
 import com.akiteam.demo.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,8 +41,9 @@ public class LoginController {
      */
     @PostMapping("/login")
     @Operation(summary = "登录")
-    public R<UserId> login(@RequestBody UserLoginInfo userLoginInfo) {
-        return R.data(userService.login(userLoginInfo), GlobalConstant.USER_LOGIN_SUCCESS);
+    public R<UserLoginAccess> login(@RequestBody UserLoginInfo userLoginInfo) {
+        UserLoginAccess login = userService.login(userLoginInfo);
+        return R.data(login);
     }
 
     /**

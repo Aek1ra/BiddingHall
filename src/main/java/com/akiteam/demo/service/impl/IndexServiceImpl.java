@@ -19,7 +19,7 @@ public class IndexServiceImpl implements IndexService {
 
     @Override
     public IndexGoodsTotal getGoodsTotal() {
-        return new IndexGoodsTotal(indexMapper.getGoodsTotal() + "吨");
+        return new IndexGoodsTotal(indexMapper.getGoodsTotal());
     }
 
     @Override

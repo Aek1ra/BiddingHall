@@ -46,8 +46,8 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
     @Override
-    public void changeInfoStatus(InfoId infoId) {
-        auctionMapper.changeInfoStatus(infoId.getInfoId());
+    public void changeInfoStatus(UserId userId) {
+        auctionMapper.changeInfoStatus(userId.getUserId());
     }
 
     @Override
@@ -87,5 +87,19 @@ public class AuctionServiceImpl implements AuctionService {
         Integer maxQuoteAmount = auctionMapper.getMaxQuoteAmount();
         String upperCase = amountConversion(String.valueOf(maxQuoteAmount));
         return new TheQuoteAmount(maxQuoteAmount,upperCase,rank);
+    }
+
+    @Override
+    public List<AuctionRank> getAuctionRank() {
+        AuctionRank auc1 = new AuctionRank("石头", 71.3);
+        AuctionRank auc2 = new AuctionRank("沙子",24.1);
+        AuctionRank auc3 = new AuctionRank("桌子",13.7);
+        AuctionRank auc4 = new AuctionRank("椅子",5.9);
+        List<AuctionRank> list = new ArrayList<>();
+        list.add(auc1);
+        list.add(auc2);
+        list.add(auc3);
+        list.add(auc4);
+        return list;
     }
 }

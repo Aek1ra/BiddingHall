@@ -12,7 +12,7 @@ public interface AuctionService{
 
     PageResult getAuctionRecords(PageHelperPojo pageHelperPojo);
 
-    void changeInfoStatus(InfoId infoId);
+    void changeInfoStatus(UserId userId);
 
     List<GetInformation> getInformation(Info info);
 
@@ -22,4 +22,6 @@ public interface AuctionService{
     List<PassengerFlowAndSalesVolume> getPassengerFlowAndSalesVolume();
 
     TheQuoteAmount getTheQuoteAmount(UserId userId);
+
+    List<AuctionRank> getAuctionRank();
 }

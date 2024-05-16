@@ -5,6 +5,7 @@ import com.akiteam.demo.entity.UserInfo;
 import com.akiteam.demo.mapper.UserMapper;
 import com.akiteam.demo.pojo.User;
 import com.akiteam.demo.pojo.UserId;
+import com.akiteam.demo.pojo.UserLoginAccess;
 import com.akiteam.demo.pojo.UserLoginInfo;
 import com.akiteam.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,17 +36,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserId login(UserLoginInfo userLoginInfo) {
+    public UserLoginAccess login(UserLoginInfo userLoginInfo) {
         //返回的用户id
         Integer userId = userMapper.login(userLoginInfo);
-        //登录状态更改
-        userMapper.loginStatusChange(userId);
-        //获取当前时间
-        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-        //插入当前时间为登录时间
-        userMapper.insertLoginTime(currentTimestamp,userId);
-        UserId userId1 = new UserId(userId);
-        return userId1;
+        if (userId == null){
+            return new UserLoginAccess(null,GlobalConstant.USER_LOGINFAILED);
+        }else {
+            //登录状态更改
+            userMapper.loginStatusChange(userId);
+            //获取当前时间
+            Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+            //插入当前时间为登录时间
+            userMapper.insertLoginTime(currentTimestamp,userId);
+            UserId userId1 = new UserId(userId);
+            return new UserLoginAccess(userId1.getUserId(),GlobalConstant.USER_LOGIN_SUCCESS);
+        }
     }
 
     @Override

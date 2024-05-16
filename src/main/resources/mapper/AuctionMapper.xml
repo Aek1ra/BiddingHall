@@ -50,7 +50,7 @@
             status = 1
         </set>
         <where>
-            id = #{infoId}
+            user_id = #{userId}
         </where>
     </update>
 

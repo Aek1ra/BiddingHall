@@ -16,5 +16,5 @@ public class IndexGoodsTotal {
      * 商品总数
      */
     @Schema(name = "goodsTotal",description = "商品总数")
-    private String goodsTotal;
+    private Integer goodsTotal;
 }
