@@ -56,8 +56,11 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
     @Override
-    public List<GoodsInfo> getGoodsInfo(GoodsName goodsName) {
-        return auctionMapper.getGoodsInfo(goodsName.getGoodsName());
+    public PageResult getGoodsInfo(GoodsName goodsName) {
+        PageHelper.startPage(goodsName.getPageNum(),goodsName.getPageSize());
+        List<GoodsInfo> goodsInfo = auctionMapper.getGoodsInfo(goodsName.getGoodsName());
+        PageInfo<GoodsInfo> page = new PageInfo<>(goodsInfo);
+        return new PageResult(page.getTotal(),page.getPageSize(),page.getPages(),page.getList());
     }
 
     @Override

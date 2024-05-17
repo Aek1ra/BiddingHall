@@ -1,5 +1,6 @@
 package com.akiteam.demo.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -38,6 +40,7 @@ public class AuctionRecords {
      * 报价时间
      */
     @Schema(name = "auctionTime",description = "报价时间")
-    private Timestamp auctionTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "Asia/Shanghai")
+    private Date auctionTime;
 
 }

@@ -57,7 +57,8 @@
     <select id="getGoodsInfo" resultMap="getGoodsInfoResultMap">
         select * from goods_info
         <where>
-            <if test="goodsName != null">
+            1=1
+            <if test="goodsName != null and goodsName != ''">
                 and goods_name like concat('%',#{goodsName},'%')
             </if>
         </where>

@@ -75,7 +75,7 @@ public class AuctionController {
      */
     @PostMapping("/getGoodsInfo")
     @Operation(summary = "获取竞价信息")
-    public R<List<GoodsInfo>> getGoodsInfo(@RequestBody GoodsName goodsName){
+    public R<PageResult> getGoodsInfo(@RequestBody GoodsName goodsName){
         return R.data(auctionService.getGoodsInfo(goodsName));
     }
 

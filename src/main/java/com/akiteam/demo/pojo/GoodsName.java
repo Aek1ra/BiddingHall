@@ -17,4 +17,16 @@ public class GoodsName {
     @Schema(name = "goodsName",description = "商品名称")
     private String goodsName;
 
+    /**
+     * 一共多少页
+     */
+    @Schema(name = "pageNum",description = "一共多少页")
+    private Integer pageNum;
+
+    /**
+     * 每页多少数据
+     */
+    @Schema(name = "pageSize",description = "每页多少数据")
+    private Integer pageSize;
+
 }

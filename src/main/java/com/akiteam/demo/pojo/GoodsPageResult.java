@@ -1,22 +1,14 @@
-package com.akiteam.demo.entity;
-import com.baomidou.mybatisplus.annotation.TableName;
+package com.akiteam.demo.pojo;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.Date;
 
-@AllArgsConstructor
 @Data
-@Builder
-@NoArgsConstructor
-@Schema(name = "商品信息表")
-@TableName(value = "goods_info")
-public class GoodsInfo {
+public class GoodsPageResult {
 
     /**
      * 商品id 主键

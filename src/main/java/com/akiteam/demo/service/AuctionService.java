@@ -16,7 +16,7 @@ public interface AuctionService{
 
     List<GetInformation> getInformation(Info info);
 
-    List<GoodsInfo> getGoodsInfo(GoodsName goodsName);
+    PageResult getGoodsInfo(GoodsName goodsName);
 
 
     List<PassengerFlowAndSalesVolume> getPassengerFlowAndSalesVolume();
